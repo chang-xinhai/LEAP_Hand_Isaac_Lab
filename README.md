@@ -4,12 +4,11 @@ This repository contains an IsaacLab environment extension  and sim2real deploym
 ![real gif](docs/images/reorient_z_real.gif)
 
 ## Installation
-Download both Isaac Sim and IsaacLab from the [installation guide](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html). This repository is tested on a conda environment with IsaacSim version 4.5 and Isaaclab version 2.1.0 on Ubuntu 22.04.
+Download both Isaac Sim and IsaacLab from the [installation guide](https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html). This repository has been refactored for the local GaitLab stack with Isaac Sim 5.1 and Isaac Lab 2.3.0 on Ubuntu 22.04.
 
 Start by activating the conda environment:
 ```bash
-conda create -n isaaclab python=3.10
-conda activate isaaclab
+conda activate gaitlab
 ```
 
 Download the repository and install the library:
@@ -28,7 +27,14 @@ Once in the `LEAP_Isaaclab` parent directory in your terminal, you can train a p
 
 You can train a policy using the following command:
 ```bash
-python scripts/rl_games/train.py --task Isaac-Reorient-Cube-Leap --headless
+bash scripts/leaphand/reorientation/train.sh
+```
+
+The training helper uses the `gaitlab` conda environment, runs headless by default, and records videos periodically under `logs/rl_games/leap_hand_reorient/<run>/videos/train`.
+
+You can still call the Isaac Lab RL-Games entry point directly:
+```bash
+python scripts/rl_games/train.py --task Isaac-Reorient-Cube-Leap --headless --video --video_length 600 --video_interval 8000
 ```
 
 And visualize a policy with the following command:

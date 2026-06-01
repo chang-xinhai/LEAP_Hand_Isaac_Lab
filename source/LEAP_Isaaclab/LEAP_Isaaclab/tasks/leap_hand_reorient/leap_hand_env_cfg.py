@@ -18,7 +18,7 @@ from isaaclab.scene import InteractiveSceneCfg
 from isaaclab.sim import PhysxCfg, SimulationCfg
 from isaaclab.sim.spawners.materials.physics_materials_cfg import RigidBodyMaterialCfg
 from isaaclab.utils import configclass
-from isaaclab.actuators.actuator_cfg import ImplicitActuatorCfg
+from isaaclab.actuators import ImplicitActuatorCfg
 from isaaclab.assets.articulation import ArticulationCfg
 from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
 import isaaclab.envs.mdp as mdp
@@ -57,6 +57,7 @@ class EventCfg:
             "asset_cfg": SceneEntityCfg("robot"),  
             "stiffness_distribution_params":(3.0, 3.0), 
             "damping_distribution_params": (0.1, 0.1),  
+            "operation": "abs",
             "distribution": "uniform",
         },
     )

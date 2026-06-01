@@ -7,7 +7,7 @@ Modified template from https://github.com/isaac-sim/IsaacLab/blob/main/source/is
 import math
 
 import isaaclab.sim as sim_utils
-from isaaclab.actuators.actuator_cfg import ImplicitActuatorCfg
+from isaaclab.actuators import ImplicitActuatorCfg
 from isaaclab.assets.articulation import ArticulationCfg
 from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
 from pathlib import Path
@@ -45,8 +45,8 @@ LEAP_HAND_CFG = ArticulationCfg(
     actuators={
         "fingers": ImplicitActuatorCfg(
             joint_names_expr=[".*"],
-            effort_limit=0.5,
-            velocity_limit=100.0,
+            effort_limit_sim=0.5,
+            velocity_limit_sim=100.0,
             stiffness=3.0,
             damping=0.1,
             friction=0.01,
