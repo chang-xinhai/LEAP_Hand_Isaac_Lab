@@ -126,6 +126,13 @@ class ReorientationEnv(DirectRLEnv):
         if "log" not in self.extras:
             self.extras["log"] = {}
 
+        if self.viewport_camera_controller is not None:
+            self.viewport_camera_controller.set_view_env_index(0)
+            lookat = self.hand.data.default_root_state[0, 0:3].cpu().numpy()
+            offset = np.array([1.25, 1.25, 1.50], dtype=np.float32)
+            eye = lookat + offset
+            self.viewport_camera_controller.update_view_location(eye, lookat)
+
         self.sim_real_indices()
 
     def _setup_scene(self):
